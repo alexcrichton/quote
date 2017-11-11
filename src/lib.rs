@@ -87,14 +87,14 @@ pub mod __rt {
         // `super`s". No idea why that's spit out, but ensuring that the default
         // span comes out seems to fix it!
         tokens.append_all(s.into_iter().map(|mut t| {
-            t.span = Default::default();
+            t.span = Span::call_site();
             t
         }));
     }
 
     pub fn append_kind(tokens: &mut ::Tokens, kind: TokenNode) {
         tokens.append(TokenTree {
-            span: Default::default(),
+            span: Span::call_site(),
             kind: kind,
         })
     }
